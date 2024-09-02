@@ -1,0 +1,9 @@
+---
+title: "Projeto Extração de dados de PDF"
+output: html_notebook
+---
+
+```{r}
+library(tabulapdf)
+out <- extract_tables(file = "arquivos/LR_017_Relatório_Cotacões_de_Referencias_30_8_2024.pdf")
+```
