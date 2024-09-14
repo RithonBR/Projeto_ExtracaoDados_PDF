@@ -3,7 +3,45 @@ title: "Projeto Extração de dados de PDF"
 output: html_notebook
 ---
 
-```{r}
+Bibliotecas e o Arquivos que iremos usar
+
+```{r include=FALSE}
 library(tabulapdf)
-out <- extract_tables(file = "arquivos/LR_017_Relatório_Cotacões_de_Referencias_30_8_2024.pdf")
+library(tidyr)
+library(dplyr)
+dadosLista <- extract_tables(file = "arquivos/LR_017_Relatório_Cotacões_de_Referencias_30_8_2024.pdf")
+```
+
+Variaveis Globais
+
+```{r include=FALSE}
+q = 0
+iLinhas = 0
+df2=data.frame()
+df1=data.frame()
+df= data.frame()
+```
+
+Tratamento de dados
+
+```{r include=FALSE}
+while (q < length(dadosLista)) {
+  q = q + 1
+  iLinhas = iLinhas + length(dadosLista[[q]][[1]])
+  if ((length(dadosLista[[q]])) > 8){ 
+    df1 = data.frame(dadosLista[q]) 
+    df1 = df1 %>% unite(col = ...1,1:2)
+    df = bind_rows(df,df1)
+
+  } else {
+    df2 = dadosLista[[q]] 
+    df = bind_rows(df,df2)
+    
+  }
+}
+```
+
+
+```{r include=FALSE}
+dadosJuntos = bind_rows(out)
 ```
