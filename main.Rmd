@@ -48,11 +48,13 @@ colnames(df)[6] <- "Minimo"
 colnames(df)[7] <- "Preco"
 colnames(df)[8] <- "Comum"
 
-  dadosTratados = df %>% filter(Produtos != 'NA') %>% filter (Preco != 'NA') %>%  filter(Tipo != 'NA')
+  dadosTratados = df %>% filter(Produtos != 'NA') %>% filter (Preco != 'NA') %>%  filter(Tipo != 'NA')  %>% separate(col = Preco,into = c('minmax','maxmin'),sep = ' ')
+  
+  
 
 ```
 
 
 ```{r include=FALSE}
-  
+
 ```
