@@ -39,9 +39,20 @@ while (q < length(dadosLista)) {
     
   }
 }
+colnames(df)[1] <- "Produtos"
+colnames(df)[2] <- "Tipo"
+colnames(df)[3] <- "Origem"
+colnames(df)[4] <- "Embalagem"
+colnames(df)[5] <- "KG"
+colnames(df)[6] <- "Minimo"
+colnames(df)[7] <- "Preco"
+colnames(df)[8] <- "Comum"
+
+  dadosTratados = df %>% filter(Produtos != 'NA') %>% filter (Preco != 'NA') %>%  filter(Tipo != 'NA')
+
 ```
 
 
 ```{r include=FALSE}
-dadosJuntos = bind_rows(out)
+  
 ```
